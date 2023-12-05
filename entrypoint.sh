@@ -69,10 +69,10 @@ PIPELINE_SLUG=$(echo "${INPUT_PIPELINE}" | cut -d'/' -f2)
 COMMIT="${INPUT_COMMIT:-${GITHUB_SHA}}"
 BRANCH="${INPUT_BRANCH:-${GITHUB_REF#"refs/heads/"}}"
 MESSAGE="${INPUT_MESSAGE:-}"
+PULL_REQUEST_NUMBER="${INPUT_PULL_REQUEST_NUMBER:-}"
 
 NAME=$(jq -r ".pusher.name" "$GITHUB_EVENT_PATH")
 EMAIL=$(jq -r ".pusher.email" "$GITHUB_EVENT_PATH")
-PULL_REQUEST_ID=$(jq -r '.pull_request.number // ""' "$GITHUB_EVENT_PATH")
 
 INPUT_BUILD_ENV_VARS="${INPUT_BUILD_ENV_VARS:-}"
 
@@ -112,8 +112,8 @@ JSON=$(
 )
 
 # Link pull request if pull request id is specified
-if [[ -n "$PULL_REQUEST_ID" ]]; then
-  JSON=$(echo "$JSON" | jq -c --arg PULL_REQUEST_ID "$PULL_REQUEST_ID" '. + {pull_request_id: $PULL_REQUEST_ID}')
+if [[ -n "$PULL_REQUEST_NUMBER" ]]; then
+  JSON=$(echo "$JSON" | jq -c --arg PULL_REQUEST_NUMBER "$PULL_REQUEST_NUMBER" '. + {pull_request_id: $PULL_REQUEST_NUMBER}')
 fi
 
 # Set build meta data, if specified
