@@ -1,4 +1,4 @@
-name: 'Trigger Buildkite Pipeline'
+name: 'Trigger Buildkite Pipeline Test'
 author: 'Buildkite'
 description: 'A GitHub Action for triggering a build on a Buildkite pipeline.'
 inputs:
