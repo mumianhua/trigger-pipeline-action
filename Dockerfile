@@ -1,7 +1,7 @@
 FROM alpine
 
-LABEL repository="https://github.com/buildkite/trigger-pipeline-action"
-LABEL homepage="https://github.com/buildkite/trigger-pipeline-action"
+LABEL repository="https://github.com/mumianhua/trigger-pipeline-action.git"
+LABEL homepage="https://github.com/mumianhua/trigger-pipeline-action.git"
 LABEL maintainer="Buildkite Support <support@buildkite.com>"
 
 LABEL com.github.actions.name="Trigger Buildkite Pipeline"
